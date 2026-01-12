@@ -9,11 +9,20 @@ sudo apt upgrade -y
 
 sudo reboot
 
-sudo apt install python3.11 python3.11-venv python3.11-dev -y
+sudo apt install -y \
+build-essential libssl-dev zlib1g-dev \
+libncurses5-dev libncursesw5-dev \
+libreadline-dev libsqlite3-dev \
+libffi-dev libbz2-dev liblzma-dev tk-dev wget
 
-python3 --version
+wget https://www.python.org/ftp/python/3.11.9/Python-3.11.9.tgz
+tar -xvf Python-3.11.9.tgz
+cd Python-3.11.9
+./configure --enable-optimizations
+make -j$(nproc)
+sudo make altinstall
 
-python3 -m venv ai-env
+python3.11 -m venv ai-env
 
 source ai-env/bin/activate
 
@@ -36,7 +45,7 @@ libsdl2-ttf-dev
 
 python3.11 -m pip install --upgrade pip
 
-python3.11 -m pip install "numpy<2.0"
+pip install numpy==1.26.4
 
 pip3 install torch torchvision torchaudio
 
@@ -44,17 +53,7 @@ pip install gymnasium
 
 pip install pygame
 
-pip install tflite-runtime
+pip install tensorflow pygame
+python run_game.py
 
-sudo apt install -y \
-build-essential libssl-dev zlib1g-dev \
-libncurses5-dev libncursesw5-dev \
-libreadline-dev libsqlite3-dev \
-libffi-dev libbz2-dev liblzma-dev tk-dev wget
 
-wget https://www.python.org/ftp/python/3.11.9/Python-3.11.9.tgz
-tar -xvf Python-3.11.9.tgz
-cd Python-3.11.9
-./configure --enable-optimizations
-make -j$(nproc)
-sudo make altinstall
