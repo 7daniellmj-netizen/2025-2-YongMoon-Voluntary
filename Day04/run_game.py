@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-랩탑용 테스트 Pong AI 게임
+테스트 Pong AI 게임
 Frame Skip 적용 + TFLite 모델 사용
 """
 
@@ -271,5 +271,6 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         print("\n\n  사용자가 게임을 중단했습니다.")
         sys.exit(0)
+
 
 
